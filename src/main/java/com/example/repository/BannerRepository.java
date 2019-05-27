@@ -11,4 +11,8 @@ public interface BannerRepository extends CrudRepository<Banner, Integer> {
 
     @Override
     Collection<Banner> findAll();
+
+    Collection<Banner> findByCategoryId(Integer categoryId);
+
+    boolean existsByName(String name);
 }

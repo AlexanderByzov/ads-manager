@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class Banner {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false)
