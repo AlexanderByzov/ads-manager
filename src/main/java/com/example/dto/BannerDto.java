@@ -1,22 +1,31 @@
 package com.example.dto;
 
-import javax.validation.constraints.*;
+import lombok.*;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
+@Getter
+@AllArgsConstructor
+@ToString
+@Builder(toBuilder = true)
 public class BannerDto {
 
-    private Integer id;
+    private final Integer id;
 
     @NotBlank
     @Size(max = 255)
-    private String name;
+    private final String name;
 
     @Digits(integer = 8, fraction = 2)
-    private BigDecimal price;
+    private final BigDecimal price;
 
     @NotNull
-    private CategoryDto category;
+    private final CategoryDto category;
 
     @NotBlank
-    private String content;
+    private final String content;
 }
