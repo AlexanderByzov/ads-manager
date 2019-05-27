@@ -11,4 +11,6 @@ public interface CategoryRepository extends CrudRepository<Category, Integer> {
 
     @Override
     Collection<Category> findAll();
+
+    boolean existsByNameOrRequestName(String name, String requestName);
 }
