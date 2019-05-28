@@ -20,7 +20,7 @@ public class Banner {
     private BigDecimal price;
 
     @ManyToOne(optional = false)
-    @JoinColumn(nullable = false, updatable = false)
+    @JoinColumn(nullable = false)
     private Category category;
 
     @Column(nullable = false)
