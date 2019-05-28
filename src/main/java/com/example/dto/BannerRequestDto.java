@@ -6,8 +6,15 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-@Builder(toBuilder = true)
+@Builder
 public class BannerRequestDto {
+
     @NotBlank
-    private static String content;
+    private final String requestCategoryName;
+
+    @NotBlank
+    private final String clientIpAddress;
+
+    @NotBlank
+    private final String userAgent;
 }

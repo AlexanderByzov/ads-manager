@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.BannerRequestDto;
+import com.example.dto.BannerResponseDto;
 import com.example.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,14 +25,19 @@ public class BannerRequestController {
     }
 
     @GetMapping
-    public BannerRequestDto getBanner(@RequestParam String category,
-                                      @RequestHeader(name = USER_AGENT) String userAgency,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) {
-        BannerRequestDto banner = requestService.getBanner(category, request.getRemoteAddr(), userAgency);
-        if (Objects.isNull(banner)) {
+    public BannerResponseDto getBanner(@RequestParam String category,
+                                       @RequestHeader(name = USER_AGENT) String userAgent,
+                                       HttpServletRequest request,
+                                       HttpServletResponse response) {
+        BannerRequestDto bannerRequestDto = BannerRequestDto.builder()
+                .requestCategoryName(category)
+                .clientIpAddress(request.getRemoteAddr())
+                .userAgent(userAgent)
+                .build();
+        BannerResponseDto responseDto = requestService.getBanner(bannerRequestDto);
+        if (Objects.isNull(responseDto)) {
             response.setStatus(HttpServletResponse.SC_NO_CONTENT);
         }
-        return banner;
+        return responseDto;
     }
 }
