@@ -1,6 +1,8 @@
 # IDEA
 .idea
 
+logs
+
 # Maven
 target/
 pom.xml.tag
