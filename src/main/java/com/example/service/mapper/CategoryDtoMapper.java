@@ -2,7 +2,9 @@ package com.example.service.mapper;
 
 import com.example.dto.CategoryDto;
 import com.example.entity.Category;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CategoryDtoMapper implements DtoMapper<CategoryDto, Category> {
     @Override
     public CategoryDto toDto(Category category) {
